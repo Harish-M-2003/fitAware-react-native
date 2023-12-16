@@ -1,12 +1,10 @@
-import React, { useContext, useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Accelerometer } from 'expo-sensors';
-import { AnimatedCircularProgress } from 'react-native-circular-progress';
-import { countContext } from '../../../context/countContext';
+import { useState  , useEffect} from "react";
+import { countContext } from "./countContext";
+import { Accelerometer } from "expo-sensors";
 
-const Counter = () => {
-  const [stepCount , setStepCount] = useState(0);
-  const [prevValue, setPrevValue] = useState(0);
+export default function CountContextProvider({children}){
+    const [stepCount, setStepCount] = useState(0);
+    const [prevValue, setPrevValue] = useState(0);
   const [cooldown, setCooldown] = useState(false);
   const [totalDistance, setTotalDistance] = useState(0);
   const threshold = 0.7; // Adjusted threshold, experiment with this value
@@ -47,39 +45,12 @@ const Counter = () => {
       subscription && subscription.remove();
     };
   }, [prevValue, cooldown, totalDistance, stepCount]);
-
-  // const {stepCount} = useContext(countContext);
   
+
   return (
-    <View style={styles.container}>
-      {/* <Text style={styles.text}>Step Count: {stepCount}</Text>
-      <Text style={styles.text}>Total Distance: {totalDistance.toFixed(2)} meters</Text> */}
-      <AnimatedCircularProgress
-          size={250}
-          width={15}
-          fill={stepCount % 100}
-          tintColor="#f64d41"
-          backgroundColor="rgba(246, 77, 65, 0.5)"
-        >
-          {() => 
-          <View style={{flex : 1 , justifyContent : "center" , alignItems : "center"}}>
-                <Text style={{fontSize : 30}}>{stepCount}</Text>
-                <Text style={{fontSize : 25 , color : "gray"}}>Steps</Text>
-        </View>}
-        </AnimatedCircularProgress>
-    </View>
+    <countContext.Provider value={{stepCount , setStepCount}}>
+        {children}
+    </countContext.Provider>
   );
-};
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 20,
-  },
-});
-
-export default Counter;
+}

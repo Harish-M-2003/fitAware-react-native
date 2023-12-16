@@ -7,9 +7,11 @@ import SearchCarousel from "./Components/Carousal";
 import { Text } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import CardCarousel from "./Components/CardCarousal";
+import BottomNavigation from "../../AppComponent/BottomBar";
 
-export default function Search() {
+export default function Search({navigation}) {
   return (
+    <View style={{flex : 1}}>
     <ScrollView style={{ flex: 1 }} showsVerticalScrollIndicator={false}>
       <View style={{ flex: 1, padding: 10, gap: 30, backgroundColor: "white" }}>
         <View style={{ paddingVertical: "5%", paddingHorizontal: "2%" }}>
@@ -53,5 +55,8 @@ export default function Search() {
         </View>
       </View>
     </ScrollView>
+      <View/>
+      <BottomNavigation theme={false} navigation={navigation}/>
+</View>
   );
 }

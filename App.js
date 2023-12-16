@@ -19,14 +19,28 @@ import { Ionicons } from '@expo/vector-icons';
 import Profile from "./pages/Profile/Profile";
 import Search from "./pages/Search/Search";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import { useEffect, useState } from "react";
+// import CountContextProvider from "./context/countContextProvider";
+import { useContext, useEffect, useState } from "react";
+import { Accelerometer } from "expo-sensors";
+import Reader from "./pages/Reader/Reader";
+import { createStackNavigator } from "@react-navigation/stack";
+
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
 
 export default function App() {
-  const Tab = createBottomTabNavigator();
+
+  const Tab = createStackNavigator();
   NavigationBar.setBackgroundColorAsync("white");
+  
+  // AsyncStorage.setItem('stepCount', String(stepCount));
+  
+
   return (
-    <GestureHandlerRootView style={{flex : 1}}>
+      <GestureHandlerRootView style={{flex : 1}}>
+        {/* <CountContextProvider> */}
       <SafeAreaView style={styles.container}>
       <NavigationContainer>
         <Tab.Navigator
@@ -39,17 +53,18 @@ export default function App() {
         >
           {/* <Tab.Screen name="Login" component={Login} />
           <Tab.Screen name="Steps" component={StepsCounter} /> */}
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Home"
             component={Home}
+          
             options={{
               headerShown : false,
               tabBarIcon: ({ color, size }) => (
                 <AntDesign name="home" size={24} color="black" />
               ),
             }}
-          />
-          <Tab.Screen
+          /> */}
+          {/* <Tab.Screen
             name="Search"
             component={Search}
             options={{
@@ -58,8 +73,8 @@ export default function App() {
                 <Ionicons name="search" size={24} color="black" />
               ),
             }}
-          />
-          <Tab.Screen
+          /> */}
+          {/* <Tab.Screen
             name="Performance"
             component={Performance}
             options={{
@@ -72,7 +87,7 @@ export default function App() {
                 />
               ),
             }}
-          />
+          /> */}
           <Tab.Screen
             name="Blogs"
             component={Blogs}
@@ -83,7 +98,7 @@ export default function App() {
               ),
             }}
           />
-          <Tab.Screen
+          {/* <Tab.Screen
             name="Profile"
             component={Profile}
             options={{
@@ -92,10 +107,19 @@ export default function App() {
                 <MaterialCommunityIcons name="account" size={24} color="black" />
               ),
             }}
+          /> */}
+          <Tab.Screen
+            name="Reader"
+            component={Reader}
+            options={{
+              headerShown  : false,
+            }}
           />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
+
+    {/* </CountContextProvider>Ph */}
     </GestureHandlerRootView>
     
   );

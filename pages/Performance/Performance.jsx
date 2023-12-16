@@ -2,9 +2,10 @@ import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import Graph from "../Steps/Components/Graph";
 import CircularBanner from "../Steps/Components/CircularBanner";
 import { FontAwesome5, Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import BottomNavigation from "../../AppComponent/BottomBar";
 
 export default function Performance({ navigation }) {
-  let count = 457;
+  let stepCount = 500;
   let status = "Active";
 
   return (
@@ -13,7 +14,7 @@ export default function Performance({ navigation }) {
         <Text style={{ fontWeight: "bold", fontSize: 25 }}>Results</Text>
       </View>
       <View style={{ alignItems: "center", paddingVertical: 40 }}>
-        <Text style={{ fontWeight: "bold", fontSize: 50 }}>{count}</Text>
+        <Text style={{ fontWeight: "bold", fontSize: 50 }}>{stepCount}</Text>
         <Text style={{ color: "gray", marginTop: 10 }}>MOVES /daily</Text>
       </View>
       <View style={{ alignItems: "center" }}>
@@ -50,6 +51,7 @@ export default function Performance({ navigation }) {
       <View style={{flex : 0.6 }}>
         <Graph/>
       </View>
+      <BottomNavigation navigation={navigation} theme={false}/>
     </View>
   );
 }

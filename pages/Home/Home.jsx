@@ -1,7 +1,20 @@
-import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import WorkoutRecommendation from "./Components/WorkoutRecommendation";
 import Graph from "../Steps/Components/Graph";
 import HomeGraph from "./Components/HomeGraph";
+import BottomNavigation from "../../AppComponent/BottomBar";
+import { useState } from "react";
+// import { useContext } from "react";
+// import { countContext } from "../../context/countContext";
+// import AsyncStorage from '@react-native-async-storage/async-storage';
+// import
 
 function getMonthName(date) {
   let month = "";
@@ -39,78 +52,97 @@ function getMonthName(date) {
 
 export default function Home({ navigation }) {
   let date = new Date();
+  let stepCount = 0;
 
-  let steps = 600;
+  const [accountName, setAccountName] = useState("name");
+  // console.log(stepCount)
+
+  // try{
+  //    stepCount = AsyncStorage.getItem("stepCount")
+  //   console.log(stepCount,"our stepcount")
+
+  // }
+  // catch(e)
+  // {
+  //   console.log(e)
+  // }
 
   return (
-    <ScrollView style={{ flex: 1, backgroundColor: "white" }} showsVerticalScrollIndicator={false}>
-      <View style={styles.container}>
-        <View
-          style={{
-            paddingBottom: "10%",
-            paddingLeft: "5%",
-            alignItems: "flex-end",
-          }}
-        >
+    <View style={{ flex: 1 }}>
+      <ScrollView
+        // style={{ flex: 1, backgroundColor: "white", position: "relative" }}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.container}>
           <View
             style={{
-              flex: 1,
-              gap: 10,
-              flexDirection: "row",
-              justifyContent: "center",
-              alignItems: "center",
+              paddingBottom: "10%",
+              paddingLeft: "5%",
+              alignItems: "flex-end",
             }}
           >
-            <Text style={{ fontSize: 15 }}>Account name</Text>
-            <Image
-              style={{ height: 50, width: 50, borderRadius: 50 }}
-              source={{
-                uri: "https://media.istockphoto.com/id/1360708169/photo/muscular-man-clapping-hands-and-preparing-for-workout.jpg?s=1024x1024&w=is&k=20&c=UQrBe240t917F8AGLGBEYVltl8ncH9jdYlgmwve4lVI=",
+            <View
+              style={{
+                flex: 1,
+                gap: 10,
+                flexDirection: "row",
+                justifyContent: "center",
+                alignItems: "center",
               }}
-            />
-          </View>
-        </View>
-        <View style={{ gap: 15 }}>
-          <View style={{flexDirection : "row"}}>
-          <View style={{ gap: 5 }}>
-              <Text style={{ gap: 5, color: "gray" }}>
-                {date.getDate()} {getMonthName(date)} {date.getFullYear()}
-              </Text>
-              <Text style={{ gap: 5, fontSize: 25, fontWeight: "bold" }}>
-                Latest Activity
-              </Text>
+            >
+              <Text style={{ fontSize: 15 }}>{accountName}</Text>
+              <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
+                <Image
+                  style={{ height: 40, width: 40, borderRadius: 50 }}
+                  source={{
+                    uri: "https://media.istockphoto.com/id/1360708169/photo/muscular-man-clapping-hands-and-preparing-for-workout.jpg?s=1024x1024&w=is&k=20&c=UQrBe240t917F8AGLGBEYVltl8ncH9jdYlgmwve4lVI=",
+                  }}
+                />
+              </TouchableOpacity>
             </View>
           </View>
+          <View style={{ gap: 15 }}>
+            <View style={{ flexDirection: "row" }}>
+              <View style={{ gap: 5 }}>
+                <Text style={{ gap: 5, color: "gray" }}>
+                  {date.getDate()} {getMonthName(date)} {date.getFullYear()}
+                </Text>
+                <Text style={{ gap: 5, fontSize: 25, fontWeight: "bold" }}>
+                  Latest Activity
+                </Text>
+              </View>
+            </View>
             <View style={{ marginVertical: 40, marginTop: 10 }}>
               <Text
                 style={{ color: "#f64d41", fontSize: 35, fontWeight: "bold" }}
               >
-                {steps}
+                {stepCount}
               </Text>
               <Text style={{ color: "gray", paddingTop: 10 }}>MOVES /day</Text>
             </View>
-            
 
-          <View style={{ gap: 5 }}>
-            <HomeGraph />
+            <View style={{ gap: 5 }}>
+              <HomeGraph />
+            </View>
           </View>
-        </View>
 
-        <WorkoutRecommendation
-          image={
-            "https://media.istockphoto.com/id/1360708169/photo/muscular-man-clapping-hands-and-preparing-for-workout.jpg?s=1024x1024&w=is&k=20&c=UQrBe240t917F8AGLGBEYVltl8ncH9jdYlgmwve4lVI="
-          }
-          title={"Today's Workouts"}
-          content={
-            "Discover the workouts of the day created for you by your coaches"
-          }
-        />
+          <WorkoutRecommendation
+            image={
+              "https://media.istockphoto.com/id/1360708169/photo/muscular-man-clapping-hands-and-preparing-for-workout.jpg?s=1024x1024&w=is&k=20&c=UQrBe240t917F8AGLGBEYVltl8ncH9jdYlgmwve4lVI="
+            }
+            title={"Today's Workouts"}
+            content={
+              "Discover the workouts of the day created for you by your coaches"
+            }
+          />
 
-        <View>
-          <Graph />
+          {/* <View>
+            <Graph />
+          </View> */}
         </View>
-      </View>
-    </ScrollView>
+      </ScrollView>
+      <BottomNavigation theme={false} navigation={navigation} />
+    </View>
   );
 }
 
