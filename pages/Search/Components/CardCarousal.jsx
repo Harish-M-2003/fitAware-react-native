@@ -5,7 +5,7 @@ import { TouchableOpacity } from "react-native-gesture-handler";
 
 import Carousel from "react-native-reanimated-carousel";
 
-export default function CardCarousel({ title, content, price }) {
+export default function CardCarousel({ title, content, price , navigation }) {
   const width = Dimensions.get("window").width;
   return (
     <View style={{ borderRadius: 10, flex: 1 }}>
@@ -55,11 +55,15 @@ export default function CardCarousel({ title, content, price }) {
                   style={{
                     backgroundColor: "black",
                     padding: 10,
+
                     borderRadius: 5,
                     justifyContent: "center",
                     alignItems: "flex-end",
-                    paddingHorizontal: 10,
+                    paddingHorizontal: 30,
                   }}
+
+                  onPress={() => navigation.navigate("Registered")}
+
                 >
                   <Text style={{ color: "white" }}>View</Text>
                 </TouchableOpacity>

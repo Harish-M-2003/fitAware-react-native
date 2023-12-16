@@ -35,6 +35,7 @@ export default function Search({navigation}) {
           <CardCarousel
             title={"walkathon"}
             price={100}
+            navigation={navigation}
             content={
               "Avatar, a cinematic masterpiece by James Cameron, immerses audiences in the breathtaking world of Pandora, where the Na'vi people and their connection to nature unfold a mesmerizing tale of love and environmental consciousness"
             }
@@ -51,6 +52,7 @@ export default function Search({navigation}) {
             content={
               "Avatar, a cinematic masterpiece by James Cameron, immerses audiences in the breathtaking world of Pandora, where the Na'vi people and their connection to nature unfold a mesmerizing tale of love and environmental consciousness"
             }
+            navigation={navigation}
           />
         </View>
       </View>

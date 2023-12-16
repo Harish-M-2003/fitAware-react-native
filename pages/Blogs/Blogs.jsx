@@ -71,6 +71,12 @@ export default function Blogs({ navigation }) {
       <TouchableOpacity>
         <BlogCard
         navigation = {navigation}
+        blog={
+          `A peaceful life is characterized by serenity in the heart and harmony in surroundings, where tranquility becomes a cherished companion in the journey of existence. In the embrace of simplicity and contentment, each moment unfolds like a gentle melody, creating a tapestry of calm and fulfillment.
+          "A peaceful life is characterized by serenity in the heart and harmony in surroundings, where tranquility becomes a cherished companion in the journey of existence. In the embrace of simplicity and contentment, each moment unfolds like a gentle melody, creating a tapestry of calm and fulfillment."
+          "A peaceful life is characterized by serenity in the heart and harmony in surroundings, where tranquility becomes a cherished companion in the journey of existence. In the embrace of simplicity and contentment, each moment unfolds like a gentle melody, creating a tapestry of calm and fulfillment."
+          `
+        }
           image={
             "https://lumiere-a.akamaihd.net/v1/images/avatar_800x1200_208c9665.jpeg"
           }

@@ -1,16 +1,24 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, ImageBackground } from "react-native";
+import { Ionicons } from "@expo/vector-icons";
 import { ScrollView } from "react-native-gesture-handler";
+// import { ScrollView } from "react-native-gesture-handler";
 
 export default function Reader({ route, navigation }) {
   const { content, image } = route.params;
 
   return (
-<View style={{flex : 1}}>
-      <Image source={{ uri: image }} style={{ height: "50%" }} />
-      {/* <Text>{typeof image}</Text> */}
-      {/* <Image/ */}
-      
-      <Text style={{ backgroundColor: "white" , padding : 20}}>{content}</Text>
-    </View>
+    <ScrollView style={{ flex: 1, backgroundColor: "white" }}>
+      <View style={{ flex: 1 }}>
+        <ImageBackground
+          source={{ uri: image }}
+          style={{ flex: 1, padding: "50%" }}
+        >
+          <Ionicons name="arrow-back-circle-sharp" size={24} color="white" />
+        </ImageBackground>
+        <View style={{ flex: 1 , padding : 10}}>
+          <Text>{content}</Text>
+        </View>
+      </View>
+    </ScrollView>
   );
 }

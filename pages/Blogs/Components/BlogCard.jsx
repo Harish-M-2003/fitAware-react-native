@@ -3,9 +3,9 @@ import { AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 
-export default function BlogCard({ title, like, image, content , navigation }) {
+export default function BlogCard({ title, like, image, content , navigation , blog }) {
   return (
-    <TouchableOpacity onPress={()=> navigation.navigate("Reader" , {image : image , content : content})}>
+    <TouchableOpacity onPress={()=> navigation.navigate("Reader" , {image : image , content : blog})}>
       <ImageBackground
         style={{ flex: 1 }}
         imageStyle={{ borderBottomLeftRadius: 70, borderBottomRightRadius: 70 }}
