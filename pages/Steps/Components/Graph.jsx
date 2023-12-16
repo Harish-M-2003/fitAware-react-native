@@ -105,8 +105,8 @@ export default function Graph(){
       };
 
     return (
-        <View style={{padding : 5 , gap : 15 , borderRadius : 5}}>
-          <Text style={{fontSize : 20}}>History</Text>
+        <View style={{ borderRadius : 5 , marginTop : "10%"}}>
+          {/* <Text style={{fontSize : 20}}>History</Text> */}
 
           <View>
           <LineChart

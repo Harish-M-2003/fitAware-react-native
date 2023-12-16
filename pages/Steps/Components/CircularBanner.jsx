@@ -20,7 +20,7 @@ export default function CircularBanner({unit , icon  , label }){
         }}
       >
         <View style={{flex : 1 , justifyContent : "center" , alignItems : "center"  ,gap : 10 , 
-        backgroundColor : "rgba(225,225,225,0.25)" , padding : 10 , borderRadius : 10}}>
+        backgroundColor : "rgba(225,225,225,0.25)" , padding : 10 , borderRadius : 100}}>
           <AnimatedCircularProgress
             size={90}
             width={5}
@@ -34,15 +34,17 @@ export default function CircularBanner({unit , icon  , label }){
                   flex: 1,
                   justifyContent: "center",
                   alignItems: "center",
+                  gap : 5
                 }}
               >
                 {/* <Text style={{ fontSize: 10, color: "gray" }}>Steps</Text> */}
                 {/* <FontAwesome5 name="fire" size={24} color="black" /> */}
                 {icon}
+                
+          <Text style={{fontSize : 12 }}>{label} {unit}</Text>
               </View>
             )}
           </AnimatedCircularProgress>
-          <Text style={{fontSize : 15 , fontWeight : "bold"}}>{label} {unit}</Text>
         </View>
       </View>
     );
