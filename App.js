@@ -27,6 +27,8 @@ import { Accelerometer } from "expo-sensors";
 import Reader from "./pages/Reader/Reader";
 import { createStackNavigator } from "@react-navigation/stack";
 import Registered from "./pages/Registered/Registered";
+import Walkathon from "./pages/Games/Walkathon/Walkathon";
+import Map from "./pages/Map/Map";
 
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -126,11 +128,24 @@ export default function App() {
               headerShown  : false,
             }}
           />
+          <Tab.Screen
+            name="Walkathon"
+            component={Walkathon}
+            options={{
+              headerShown  : false,
+            }}
+          />
+          <Tab.Screen
+            name="Map"
+            component={Map}
+            options={{
+              headerShown  : false,
+            }} 
+          />
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaView>
 
-    {/* </CountContextProvider>Ph */}
     </GestureHandlerRootView>
     
   );

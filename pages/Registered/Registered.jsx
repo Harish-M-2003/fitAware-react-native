@@ -5,32 +5,35 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
-  
 } from "react-native";
 
-import RadioGroup from 'react-native-radio-buttons-group';
+import RadioGroup from "react-native-radio-buttons-group";
 
 import * as NavigationBar from "expo-navigation-bar";
 import { Foundation } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 import { TextInput } from "react-native";
 import { useMemo, useState } from "react";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 // import { ,  } from "react-native-gesture-handler";
-export default function Registered() {
+export default function Registered({ navigation }) {
   NavigationBar.setBackgroundColorAsync("black");
 
-  const radioButtons = useMemo(() => ([
-    {
-        id: '1', // acts as primary key, should be unique and non-empty string
+  const radioButtons = useMemo(
+    () => [
+      {
+        id: "1", // acts as primary key, should be unique and non-empty string
         // label: `Take a break, prioritize your well-being! Remember to stretch and
         // stay hydrated. 💻🌿`,
         // discriptionStyle : "white",
         // value: 'option1',
-        color : "white",
-    }
-]), []);
+        color: "white",
+      },
+    ],
+    []
+  );
 
-const [selectedId, setSelectedId] = useState();
+  const [selectedId, setSelectedId] = useState();
 
   const rules = [
     {
@@ -54,7 +57,7 @@ const [selectedId, setSelectedId] = useState();
       rule: "Report any concerns about inappropriate content or behavior for a healthier gaming environment",
     },
   ];
-  
+
   return (
     <ImageBackground
       source={{
@@ -73,11 +76,27 @@ const [selectedId, setSelectedId] = useState();
             // height: "100%",
           }}
         >
-          <Text style={{ color: "white", fontSize: 40 }}>Register</Text>
+          <View
+            style={{
+              flexDirection: "row",
+              alignItems: "center",
+              justifyContent: "space-between",
+              paddingRight : "5%",
+            }}
+          >
+            <Text style={{ color: "white", fontSize: 40 }}>Register</Text>
+            <TouchableOpacity onPress={() => navigation.goBack()}>
+              <MaterialCommunityIcons
+                name="window-close"
+                size={24}
+                color="white"
+              />
+            </TouchableOpacity>
+          </View>
           <View style={{ paddingTop: "20%" }}>
             {rules.map((value, index) => (
-              <View style={{ margin: 10 }}>
-                <Text key={index} style={{ color: "white", fontSize: 15 }}>
+              <View style={{ margin: 10 }} key={index}>
+                <Text style={{ color: "white", fontSize: 15 }}>
                   * {value.rule}
                 </Text>
               </View>
@@ -105,26 +124,28 @@ const [selectedId, setSelectedId] = useState();
           style={{
             flex: 1,
             // justifyContent: "",
-            flexDirection : "row",
+            flexDirection: "row",
             paddingHorizontal: 20,
             paddingTop: 20,
-            gap : 10,
+            gap: 10,
             // backgroundColor : "green"
           }}
         >
-            {/* <TextInput /> */}
-            {/* <RadioGroup 
+          {/* <TextInput /> */}
+          {/* <RadioGroup 
             color = {"white"}
             radioButtons={radioButtons} 
             onPress={setSelectedId}
             selectedId={selectedId}
         /> */}
-        <Text style={{color : "white"}}>Take a break, prioritize your well-being! Remember to stretch and
-            stay hydrated. 💻🌿</Text>
-          
+          <Text style={{ color: "white" }}>
+            Take a break, prioritize your well-being! Remember to stretch and
+            stay hydrated. 💻🌿
+          </Text>
         </View>
-        <View style={{ paddingHorizontal: 20, paddingTop : 25 }}>
+        <View style={{ paddingHorizontal: 20, paddingTop: 25 }}>
           <TouchableOpacity
+            onPress={() => navigation.navigate("Walkathon")}
             style={{
               backgroundColor: "white",
               padding: 15,
@@ -136,7 +157,6 @@ const [selectedId, setSelectedId] = useState();
             <Text>Registered</Text>
           </TouchableOpacity>
         </View>
-        
       </ScrollView>
     </ImageBackground>
   );
