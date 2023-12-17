@@ -19,7 +19,7 @@ export default function WorkoutRecommendation({ image, title, content }) {
           alignItems: "flex-start",
           padding : 20,
           borderRadius : 10,
-          paddingTop : "50%",
+          paddingTop : "5%",
         }}
       >
         <Text

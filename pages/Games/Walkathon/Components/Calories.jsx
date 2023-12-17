@@ -27,7 +27,7 @@ export default function Calories({value}){
               <View style={{ backgroundColor: "white" , padding : 5 , borderRadius : 120 }}>
                 <FontAwesome5 name="fire" size={24} color="#f64d41" />
               </View>
-              <Text>Calories</Text>
+              <Text style={{fontWeight : "bold"}}>Calories</Text>
             </View>
             
           <Text style={{ fontSize: 25 }}>{value}</Text>

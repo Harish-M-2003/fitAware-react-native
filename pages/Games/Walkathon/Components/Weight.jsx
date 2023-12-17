@@ -27,7 +27,7 @@ export default function Weight({value}){
               <View style={{ backgroundColor: "white" , padding : 5 , borderRadius : 120 }}>
                 <FontAwesome5 name="fire" size={24} color="#f64d41" />
               </View>
-              <Text>Weight</Text>
+              <Text style={{fontWeight : "bold"}}>Weight</Text>
             </View>
             
           <Text style={{ fontSize: 25 }}>{value}</Text>

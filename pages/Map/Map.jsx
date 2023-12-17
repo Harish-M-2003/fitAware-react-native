@@ -14,7 +14,7 @@ export default function Map({navigation}){
             {/* <View style={{position : "absolute" , top : 0 , left : 0 , flex : 1}}>
 <Ionicons name="arrow-back-circle-sharp" size={24} color="black" />
             </View> */}
-            <MapView width={"100%"} height={"100%"} mapType="hybrid">
+            <MapView width={"100%"} height={"100%"} mapType="mutedStandard">
                 {/* <Text style={{color : "white"}}>akasldk</Text> */}
             </MapView>
         </View>

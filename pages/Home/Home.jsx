@@ -11,6 +11,8 @@ import Graph from "../Steps/Components/Graph";
 import HomeGraph from "./Components/HomeGraph";
 import BottomNavigation from "../../AppComponent/BottomBar";
 import { useState } from "react";
+import Counter from "../Steps/Components/Counter";
+// import { Barometer } from 'expo-sensors';
 // import { useContext } from "react";
 // import { countContext } from "../../context/countContext";
 // import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -52,9 +54,24 @@ function getMonthName(date) {
 
 export default function Home({ navigation }) {
   let date = new Date();
-  let stepCount = 0;
+  // let stepCount = 0;
 
   const [accountName, setAccountName] = useState("name");
+  // const [{ pressure, relativeAltitude }, setData] = useState({ pressure: 0, relativeAltitude: 0 });
+  // const [subscription, setSubscription] = useState(null);
+
+  // const toggleListener = () => {
+  //   subscription ? unsubscribe() : subscribe();
+  // };
+
+  // const subscribe = () => {
+  //   setSubscription(Barometer.addListener(setData));
+  // };
+
+  // const unsubscribe = () => {
+  //   subscription && subscription.remove();
+  //   setSubscription(null);
+  // };
   // console.log(stepCount)
 
   // try{
@@ -90,7 +107,7 @@ export default function Home({ navigation }) {
                 alignItems: "center",
               }}
             >
-              <Text style={{ fontSize: 15 }}>{accountName}</Text>
+              {/* <Text style={{ fontSize: 15 }}>{accountName}</Text> */}
               <TouchableOpacity onPress={() => navigation.navigate("Profile")}>
                 <Image
                   style={{ height: 40, width: 40, borderRadius: 50 }}
@@ -101,6 +118,7 @@ export default function Home({ navigation }) {
               </TouchableOpacity>
             </View>
           </View>
+
           <View style={{ gap: 15 }}>
             <View style={{ flexDirection: "row" }}>
               <View style={{ gap: 5 }}>
@@ -112,16 +130,24 @@ export default function Home({ navigation }) {
                 </Text>
               </View>
             </View>
-            <View style={{ marginVertical: 40, marginTop: 10 }}>
+            {/* <View style={{ marginVertical: 40, marginTop: 10 }}>
               <Text
                 style={{ color: "#f64d41", fontSize: 35, fontWeight: "bold" }}
               >
                 {stepCount}
               </Text>
               <Text style={{ color: "gray", paddingTop: 10 }}>MOVES /day</Text>
+            </View> */}
+            <View style={{ paddingTop: "5%" }}>
+              <Counter />
             </View>
 
             <View style={{ gap: 5 }}>
+              <View style={{ padding: 10 }}>
+                <Text style={{ fontSize: 25, fontWeight: "bold" }}>
+                  History
+                </Text>
+              </View>
               <HomeGraph />
             </View>
           </View>

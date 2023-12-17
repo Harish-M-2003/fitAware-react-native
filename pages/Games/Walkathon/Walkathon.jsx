@@ -5,7 +5,7 @@ import { LineChart, LineChartBicolor } from "react-native-gifted-charts";
 import { MaterialIcons } from "@expo/vector-icons";
 
 import MapView from "react-native-maps";
-import { FontAwesome5 } from "@expo/vector-icons";
+// import { FontAwesome5 } from "@expo/vector-icons";
 import Weight from "./Components/Weight";
 import Calories from "./Components/Calories";
 import { Pressable } from "react-native";
@@ -17,7 +17,7 @@ export default function Walkathon({ navigation }) {
     { value: 0, dataPointText: "0" },
     { value: 10, dataPointText: "10" },
     { value: 8, dataPointText: "8" },
-    { value: 58, dataPointText: "58" },
+    { value: 18, dataPointText: "18" },
     { value: 56, dataPointText: "56" },
     { value: 78, dataPointText: "78" },
     { value: 74, dataPointText: "74" },
@@ -50,11 +50,10 @@ export default function Walkathon({ navigation }) {
         }}
       >
         <TouchableOpacity onPress={() => navigation.goBack()}>
-
-        <MaterialIcons name="keyboard-arrow-left" size={30} color="black" />
+          <MaterialIcons name="keyboard-arrow-left" size={30} color="black" />
         </TouchableOpacity>
         <Text style={{ fontWeight: "bold", fontSize: 25 }}>Walkathon</Text>
-        <View/>
+        <View />
         {/* <Text style={{ display : "none"}}>Walkathon</Text> */}
       </View>
 
@@ -62,10 +61,17 @@ export default function Walkathon({ navigation }) {
         onLongPress={() => navigation.navigate("Map")}
         style={{ marginTop: 10 }}
       >
-        <MapView width={"100%"} height={400} mapType="hybrid" />
+        <MapView width={"100%"} height={400} />
       </Pressable>
       <View
-        style={{ flex: 1, paddingVertical: 10, gap: 5, flexDirection: "row" }}
+        style={{ justifyContent: "center", alignItems: "center", padding: 10 }}
+      >
+        <Text style={{ color: "rgba(0,0,0,0.5)" }}>
+          Long press the map to view it in fullscreen
+        </Text>
+      </View>
+      <View
+        style={{ flex: 1, paddingVertical: 2, gap: 5, flexDirection: "row" }}
       >
         <Steps value={100} />
         <View
@@ -80,7 +86,14 @@ export default function Walkathon({ navigation }) {
           <Weight value={10} />
         </View>
       </View>
-      <View>
+      <View
+        style={{
+          paddingBottom: "5%",
+          paddingTop: "5%",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
         <LineChart
           data={lineData}
           data2={lineData2}
@@ -99,6 +112,7 @@ export default function Walkathon({ navigation }) {
           textShiftX={-5}
           textFontSize={13}
         />
+        <Text style={{ fontSize: 20 }}>Time</Text>
       </View>
     </ScrollView>
   );

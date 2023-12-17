@@ -4,9 +4,13 @@ import { View, Image, Dimensions } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
 import Carousel from "react-native-reanimated-carousel";
+import { Entypo } from '@expo/vector-icons';
+import { useState } from "react";
 
-export default function CardCarousel({ title, content, price , navigation }) {
+export default function CardCarousel({ data }) {
   const width = Dimensions.get("window").width;
+  const [cardIndex , setCardIndex] = useState(0);
+  
   return (
     <View style={{ borderRadius: 10, flex: 1 }}>
       <Carousel
@@ -14,9 +18,9 @@ export default function CardCarousel({ title, content, price , navigation }) {
         width={width}
         height={width / 2}
         autoPlay={false}
-        data={[...new Array(6).keys()]}
-        scrollAnimationDuration={1000}
-        // onSnapToItem={(index) => console.log("current index:", index)}
+        data={data}
+        // scrollAnimationDuration={1000}
+        onSnapToItem={(index) => setCardIndex(index)}
         renderItem={({ index }) => (
           <View style={{ paddingHorizontal: 5, flex: 1 }}>
             {/* <Image
@@ -38,8 +42,8 @@ export default function CardCarousel({ title, content, price , navigation }) {
                 gap: 10,
               }}
             >
-              <Text style={{ fontSize: 25, fontWeight: "bold" }}>{title}</Text>
-              <Text numberOfLines={2}>{content}</Text>
+              <Text style={{ fontSize: 25, fontWeight: "bold" }}>{data[index].title}</Text>
+              <Text numberOfLines={2}>{data[index].content}</Text>
               <View
                 style={{
                   alignItems: "flex-end",
@@ -50,7 +54,7 @@ export default function CardCarousel({ title, content, price , navigation }) {
                   paddingHorizontal: 5,
                 }}
               >
-                <Text>Price : {price}</Text>
+                <Text>Price : {data[index].price}</Text>
                 <TouchableOpacity
                   style={{
                     backgroundColor: "black",
@@ -62,7 +66,7 @@ export default function CardCarousel({ title, content, price , navigation }) {
                     paddingHorizontal: 30,
                   }}
 
-                  onPress={() => navigation.navigate("Registered")}
+                  onPress={() => data[index].navigation.navigate("Registered")}
 
                 >
                   <Text style={{ color: "white" }}>View</Text>
@@ -72,6 +76,18 @@ export default function CardCarousel({ title, content, price , navigation }) {
           </View>
         )}
       />
+      <View style={{alignItems : "center" , flexDirection : "row" , justifyContent : "center"}}>
+        {
+          
+          data.slice(0 , data.length).map((i) => (
+            
+             (i != cardIndex)?<Entypo name="dot-single" size={24} color="rgba(0,0,0,0.2)" /> : <></>
+
+            
+        // </View>
+          ))
+        }
+      </View>
     </View>
   );
 }

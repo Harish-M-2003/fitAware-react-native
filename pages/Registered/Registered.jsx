@@ -5,9 +5,11 @@ import {
   ImageBackground,
   StyleSheet,
   TouchableOpacity,
+  TouchableWithoutFeedback
 } from "react-native";
 
-import RadioGroup from "react-native-radio-buttons-group";
+// import RadioGroup from "react-native-radio-buttons-group";
+import Checkbox from "expo-checkbox";
 
 import * as NavigationBar from "expo-navigation-bar";
 import { Foundation } from "@expo/vector-icons";
@@ -17,6 +19,7 @@ import { useMemo, useState } from "react";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 // import { ,  } from "react-native-gesture-handler";
 export default function Registered({ navigation }) {
+  const [isChecked, setChecked] = useState(false);
   NavigationBar.setBackgroundColorAsync("black");
 
   const radioButtons = useMemo(
@@ -81,7 +84,7 @@ export default function Registered({ navigation }) {
               flexDirection: "row",
               alignItems: "center",
               justifyContent: "space-between",
-              paddingRight : "5%",
+              paddingRight: "5%",
             }}
           >
             <Text style={{ color: "white", fontSize: 40 }}>Register</Text>
@@ -138,24 +141,46 @@ export default function Registered({ navigation }) {
             onPress={setSelectedId}
             selectedId={selectedId}
         /> */}
+          <Checkbox
+            // style={styles.checkbox}
+            value={isChecked}
+            onValueChange={setChecked}
+          />
           <Text style={{ color: "white" }}>
             Take a break, prioritize your well-being! Remember to stretch and
             stay hydrated. 💻🌿
           </Text>
         </View>
         <View style={{ paddingHorizontal: 20, paddingTop: 25 }}>
-          <TouchableOpacity
-            onPress={() => navigation.navigate("Walkathon")}
-            style={{
-              backgroundColor: "white",
-              padding: 15,
-              justifyContent: "center",
-              alignItems: "center",
-              borderRadius: 10,
-            }}
-          >
-            <Text>Registered</Text>
-          </TouchableOpacity>
+          {isChecked ? (
+            <TouchableOpacity
+              onPress={() => navigation.navigate("Walkathon")}
+              style={{
+                backgroundColor: "white",
+                padding: 15,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 10,
+              }}
+            >
+              <Text>Registered</Text>
+            </TouchableOpacity>
+          ) : (
+            
+            <TouchableOpacity
+              
+              style={{
+                backgroundColor: "white",
+                padding: 15,
+                justifyContent: "center",
+                alignItems: "center",
+                borderRadius: 10,
+                opacity : 0.5,
+              }}
+            >
+              <Text>Registered</Text>
+            </TouchableOpacity>
+          )}
         </View>
       </ScrollView>
     </ImageBackground>

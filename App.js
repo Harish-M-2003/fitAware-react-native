@@ -29,6 +29,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 import Registered from "./pages/Registered/Registered";
 import Walkathon from "./pages/Games/Walkathon/Walkathon";
 import Map from "./pages/Map/Map";
+import SearchBoxPage from "./pages/Search/SearchBoxPage";
 
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -37,6 +38,8 @@ export default function App() {
 
   const Tab = createStackNavigator();
   NavigationBar.setBackgroundColorAsync("white");
+
+  
   
   // AsyncStorage.setItem('stepCount', String(stepCount));
   
@@ -138,6 +141,13 @@ export default function App() {
           <Tab.Screen
             name="Map"
             component={Map}
+            options={{
+              headerShown  : false,
+            }} 
+          />
+          <Tab.Screen
+            name="SearchBoxPage"
+            component={SearchBoxPage}
             options={{
               headerShown  : false,
             }} 

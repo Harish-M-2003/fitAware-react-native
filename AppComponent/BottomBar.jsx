@@ -8,6 +8,7 @@ import {
 
 import { Feather, FontAwesome5, Ionicons } from "@expo/vector-icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Foundation } from "@expo/vector-icons";
 import { MaterialIcons } from "@expo/vector-icons";
 // import { Ionicons } from '@expo/vector-icons';
 import { AntDesign } from "@expo/vector-icons";
@@ -17,7 +18,7 @@ import { AntDesign } from "@expo/vector-icons";
 // import { Notification } from "expo-notifications";
 // import * as Notifications from "expo-notifications";
 
-export default function BottomNavigation({ theme, navigation }) {
+export default function BottomNavigation({ navigation }) {
   // Notifications.setNotificationHandler({
   //     handleNotification: async () => ({
   //       shouldShowAlert: true,
@@ -32,11 +33,7 @@ export default function BottomNavigation({ theme, navigation }) {
         style={{ alignItems: "center" }}
         onPress={() => navigation.navigate("Home")}
       >
-        <MaterialCommunityIcons
-          name="home-variant-outline"
-          size={24}
-          color={theme ? "white" : "black"}
-        />
+        <Foundation name="home" size={24} color="black" />
       </TouchableOpacity>
 
       <TouchableOpacity
@@ -59,7 +56,6 @@ export default function BottomNavigation({ theme, navigation }) {
 
       <TouchableOpacity onPress={() => navigation.navigate("Blogs")}>
         <FontAwesome5 name="blogger-b" size={24} color="black" />
-        
       </TouchableOpacity>
 
       {/* <TouchableOpacity
