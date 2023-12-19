@@ -10,7 +10,7 @@ import WorkoutRecommendation from "./Components/WorkoutRecommendation";
 import Graph from "../Steps/Components/Graph";
 import HomeGraph from "./Components/HomeGraph";
 import BottomNavigation from "../../AppComponent/BottomBar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Counter from "../Steps/Components/Counter";
 // import { Barometer } from 'expo-sensors';
 // import { useContext } from "react";
@@ -52,37 +52,41 @@ function getMonthName(date) {
   return month;
 }
 
-export default function Home({ navigation }) {
+export default function Home({ route , navigation }) {
   let date = new Date();
+
+  
+  
+  // const [stepCount , setStepCount] = useState(0);
   // let stepCount = 0;
 
-  const [accountName, setAccountName] = useState("name");
-  // const [{ pressure, relativeAltitude }, setData] = useState({ pressure: 0, relativeAltitude: 0 });
-  // const [subscription, setSubscription] = useState(null);
+  // let {email} = route.params
+  // let email = "keshavbaskarb.cse2021@citchennai.net"
 
-  // const toggleListener = () => {
-  //   subscription ? unsubscribe() : subscribe();
-  // };
+  
 
-  // const subscribe = () => {
-  //   setSubscription(Barometer.addListener(setData));
-  // };
+  // useEffect(() => {
+    
+  //   fetch("http://AswinM007.pythonanywhere.com/getAccelerometer" , {
+  //     method : "POST",
+  //     headers : {
+  //       'Content-Type' : "application/json"
+  //     },
 
-  // const unsubscribe = () => {
-  //   subscription && subscription.remove();
-  //   setSubscription(null);
-  // };
-  // console.log(stepCount)
+  //     body : JSON.stringify({
+  //       email : email
+  //     })
+  //   })
+  //   .then((res) => res.json())
+  //   .then((data) => {
+  //     console.log("fetching" , data.values)
+  //     setStepCount(parseInt(data.values[data.values.length - 1]))
+  //   })
+  //   .catch((err) => console.log(err))
+  // },[])
 
-  // try{
-  //    stepCount = AsyncStorage.getItem("stepCount")
-  //   console.log(stepCount,"our stepcount")
-
-  // }
-  // catch(e)
-  // {
-  //   console.log(e)
-  // }
+  
+  
 
   return (
     <View style={{ flex: 1 }}>
@@ -141,6 +145,10 @@ export default function Home({ navigation }) {
             <View style={{ paddingTop: "5%" }}>
               <Counter />
             </View>
+            {/* <View style={{padding : 5 , flexDirection : "row"}}>
+              <Text style={{fontSize : 20}}>Distance : </Text>
+              <Text style={{fontSize : 20}}>{(distance === "")?0:distance} </Text>
+            </View> */}
 
             <View style={{ gap: 5 }}>
               <View style={{ padding: 10 }}>

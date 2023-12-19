@@ -30,6 +30,7 @@ import Registered from "./pages/Registered/Registered";
 import Walkathon from "./pages/Games/Walkathon/Walkathon";
 import Map from "./pages/Map/Map";
 import SearchBoxPage from "./pages/Search/SearchBoxPage";
+import Signup from "./pages/Signup/Signup";
 
 // import { MaterialCommunityIcons } from '@expo/vector-icons';
 
@@ -57,8 +58,8 @@ export default function App() {
             },
           }}
         >
-          {/* <Tab.Screen name="Login" component={Login} />
-          <Tab.Screen name="Steps" component={StepsCounter} /> */}
+          {/* <Tab.Screen name="Login" component={Login} /> */}
+          {/* <Tab.Screen name="Steps" component={StepsCounter} /> */}
           <Tab.Screen
             name="Home"
             component={Home}
@@ -148,6 +149,13 @@ export default function App() {
           <Tab.Screen
             name="SearchBoxPage"
             component={SearchBoxPage}
+            options={{
+              headerShown  : false,
+            }} 
+          />
+          <Tab.Screen
+            name="SignUp"
+            component={Signup}
             options={{
               headerShown  : false,
             }} 
